@@ -12,10 +12,10 @@ public class Main {
     private static String site = "https://vc.ru/popular";
 
     static public void ParseNews(Document doc) {
-        Elements news = doc.getElementsByClass("news_item");
+        Elements news = doc.getElementsByClass("feed__item");
         for (Element element: news) {
             try {
-                Elements etitle = element.select("div[class='l-inline'] > a");
+                Element etitle =element.child(0).child(1).child(1);
                 String link = etitle.attr("href");
 //                log.info("Header: " + etitle.text());
                 String text = taskController.GetPage(link);
