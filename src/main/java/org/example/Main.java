@@ -15,7 +15,7 @@ public class Main {
         Elements news = doc.getElementsByClass("feed__item");
         for (Element element: news) {
             try {
-                Element etitle =element.child(0).child(1).child(1);
+                Element etitle = element.child(0).child(1).child(1);
                 String link = etitle.attr("href");
 //                log.info("Header: " + etitle.text());
                 String text = taskController.GetPage(link);

@@ -103,8 +103,8 @@ public class TaskController {
         String text = "";
         if (ndoc != null) {
             // Текст публикации
-            Elements newsDoc = ndoc.getElementsByClass("content content--full ");
-            log.info("Text: " + newsDoc.text()); //  Уточнить: Иногда бывает реклама на странице. Не всегда!
+            String newsDoc = ndoc.getElementsByClass("content content--full ").select("div[class*=l-island-a] > *"). text();
+            log.info("Text: " + newsDoc); //  Уточнить: Иногда бывает реклама на странице. Не всегда!
 
             // Заголовок публикации
             Element header_service = ndoc.select("h1.content-title").first();
