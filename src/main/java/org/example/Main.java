@@ -32,8 +32,7 @@ public class Main {
 
 
 
-    public static void main(String[] args)
-            throws InterruptedException
+    public static void main(String[] args) throws InterruptedException
     {
         // Object of a class that has both produce()
         // and consume() methods
@@ -90,6 +89,7 @@ public class Main {
         // Size of list is 5.
         public static PriorityQueue<String> QueueLink = new PriorityQueue<String>();
         int capacity = 5;
+
         // Function called by producer thread
         public void produce() throws InterruptedException
         {
@@ -122,6 +122,7 @@ public class Main {
                     // notifies the consumer thread that
                     // now it can start consuming
                     notify();
+                    Thread.sleep(1000);
                 }
             }
         }
@@ -136,10 +137,13 @@ public class Main {
                     // is empty
                     while (QueueLink.size() == 0)
                         wait();
-                    log.info("\n" + Thread.currentThread().getName() + " Consume");
-                    taskController.getPage(QueueLink.poll());
-                    // Wake up producer thread
-                    notify();
+                    synchronized (this) {
+                        log.info("\n" + Thread.currentThread().getName() + " Consume");
+                        taskController.getPage(QueueLink.poll());
+                        // Wake up producer thread
+                        notify();
+                        Thread.sleep(1000);
+                    }
                 }
             }
         }
