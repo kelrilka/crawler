@@ -39,7 +39,7 @@ public class TaskController {
         boolean bStop = false;
         Document doc = null;
         for (int iTry = 0; iTry < retryCount && !bStop; iTry++) {
-            log.info("getting page from url " + url);
+            log.info("Getting page from url: " + url);
             RequestConfig requestConfig = RequestConfig.custom()
                     .setSocketTimeout(metadataTimeout)
                     .setConnectTimeout(metadataTimeout)
@@ -53,7 +53,7 @@ public class TaskController {
                 response = client.execute(request);
                 code = response.getStatusLine().getStatusCode();
                 if (code == 404) {
-                    log.warn("error get url " + url + " code " + code);
+                    log.warn("Error get url: " + url + " code: " + code);
                     bStop = true;//break;
                 } else if (code == 200) {
                     HttpEntity entity = response.getEntity();
@@ -68,7 +68,7 @@ public class TaskController {
                     bStop = true;//break;
                 } else {
                     //if (code == 403) {
-                    log.warn("error get url " + url + " code " + code);
+                    log.warn("Error get url: " + url + " code: " + code);
                     response.close();
                     response = null;
                     client.close();
@@ -98,18 +98,17 @@ public class TaskController {
         return doc;
     }
 
-    public String GetPage(String link) {
+    public void getPage(String link) {
         Document ndoc = getUrl(link);
-        String text = "";
         if (ndoc != null) {
-            // Текст публикации
-            String newsDoc = ndoc.getElementsByClass("content content--full ").select("div[class*=l-island-a] > *"). text();
-            log.info("Text: " + newsDoc); //  Уточнить: Иногда бывает реклама на странице. Не всегда!
-
             // Заголовок публикации
             Element header_service = ndoc.select("h1.content-title").first();
             String header = header_service.text();
             log.info("Header: " + header);
+
+            // Текст публикации
+            String newsDoc = ndoc.getElementsByClass("content content--full ").select("div[class*=l-island-a] > *"). text();
+            log.info("Text: " + newsDoc); //  Уточнить: Иногда бывает реклама на странице. Не всегда!
 
             Element head_service = ndoc.select("div.content-header__info").first(); // Шапка статьи, в которой содержится: время публикации и автор
 
@@ -124,6 +123,5 @@ public class TaskController {
             // Ссылка на страницу с публикацией
             log.info("URL: " + link);
         }
-        return text;
     }
 }
