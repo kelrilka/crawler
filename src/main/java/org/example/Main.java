@@ -36,7 +36,7 @@ public class Main {
     {
         // Object of a class that has both produce()
         // and consume() methods
-        final PC pc = new PC();
+        PC pc = new PC();
 
         // Create producer thread
         Thread t1 = new Thread(new Runnable() {
@@ -88,7 +88,7 @@ public class Main {
         // Create a queue shared by producer and consumer
         // Size of list is 5.
         public static PriorityQueue<String> QueueLink = new PriorityQueue<String>();
-        int capacity = 5;
+        int capacity = 20;
 
         // Function called by producer thread
         public void produce() throws InterruptedException
@@ -105,15 +105,17 @@ public class Main {
 
             log.info("\n" + Thread.currentThread().getName() + " Produce");
 
-            while (true) {
+            while (true)
+            {
                 synchronized (this)
                 {
                     // producer thread waits while list
                     // is full
-                    while (QueueLink.size() == capacity) {
+                    while (QueueLink.size() == capacity)
                         wait();
-                    }
-                    if(iterator.hasNext()){
+
+                    if(iterator.hasNext())
+                    {
                         String etem = iterator.next();
                         QueueLink.add(etem);
                         iterator.remove();
@@ -122,7 +124,7 @@ public class Main {
                     // notifies the consumer thread that
                     // now it can start consuming
                     notify();
-                    Thread.sleep(1000);
+//                    Thread.sleep(1000);
                 }
             }
         }
@@ -130,20 +132,29 @@ public class Main {
         // Function called by consumer thread
         public void consume() throws InterruptedException
         {
-            while (true) {
+            while (true)
+            {
                 synchronized (this)
                 {
                     // consumer thread waits while list
                     // is empty
                     while (QueueLink.size() == 0)
+//                        try
+//                        {
+//                            wait();
+//                        }
+//                        catch (InterruptedException e)
+//                        {
+//                            log.info("\n" + "Все! Ссылки кончились :(");
+//                        }
                         wait();
-                    synchronized (this) {
-                        log.info("\n" + Thread.currentThread().getName() + " Consume");
-                        taskController.getPage(QueueLink.poll());
-                        // Wake up producer thread
-                        notify();
-                        Thread.sleep(1000);
-                    }
+
+                    log.info("\n" + Thread.currentThread().getName() + " Consume");
+                    taskController.getPage(QueueLink.poll());
+                    // Wake up producer thread
+                    notify();
+//                        Thread.sleep(1000);
+
                 }
             }
         }
