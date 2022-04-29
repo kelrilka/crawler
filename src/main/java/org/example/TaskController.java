@@ -112,16 +112,17 @@ public class TaskController {
 
             Element head_service = ndoc.select("div.content-header__info").first(); // Шапка статьи, в которой содержится: время публикации и автор
 
-            // Время публикации
-            String time = head_service.child(2).child(1).child(0).attr("title");
-            log.info("Time: " + time);
-
             // Автор публикации
             String author = head_service.child(1).child(0).text();
             log.info("Author: " + author);
 
             // Ссылка на страницу с публикацией
             log.info("URL: " + link);
+
+            // Время публикации
+//            String time = "12:00";
+            String time = head_service.child(2).child(1).child(0).attr("title");    // в последней иттерации в этой штуке проблема
+            log.info("Time: " + time);
         }
     }
 }

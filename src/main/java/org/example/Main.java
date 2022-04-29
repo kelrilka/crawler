@@ -14,7 +14,6 @@ public class Main {
     private static String site = "https://vc.ru/popular";
     public static Set<String> setHref = new HashSet<String>();
 
-
     static Set<String> getLinks(Document doc) {
         Set<String> urls = new HashSet<String>();
         Elements news = doc.getElementsByClass("feed__item");
@@ -72,7 +71,7 @@ public class Main {
         t1.start();
         t2.start();
 
-        // t1 finishes before t2
+        // t2 finishes before t1
         t1.join();
         t2.join();
 
@@ -86,7 +85,7 @@ public class Main {
     public static class PC {
 
         // Create a queue shared by producer and consumer
-        // Size of list is 5.
+        // Size of list is 20.
         public static PriorityQueue<String> QueueLink = new PriorityQueue<String>();
         int capacity = 20;
 
@@ -136,25 +135,25 @@ public class Main {
             {
                 synchronized (this)
                 {
-                    // consumer thread waits while list
-                    // is empty
-                    while (QueueLink.size() == 0)
-//                        try
-//                        {
-//                            wait();
-//                        }
-//                        catch (InterruptedException e)
-//                        {
-//                            log.info("\n" + "Все! Ссылки кончились :(");
-//                        }
-                        wait();
+                    try
+                    {
+                        // consumer thread waits while list
+                        // is empty
+                        while (QueueLink.size() == 0)
+                            wait();
 
-                    log.info("\n" + Thread.currentThread().getName() + " Consume");
-                    taskController.getPage(QueueLink.poll());
-                    // Wake up producer thread
-                    notify();
+                        log.info("\n" + Thread.currentThread().getName() + " Consume");
+                        taskController.getPage(QueueLink.poll());
+                        // Wake up producer thread
+                        notify();
 //                        Thread.sleep(1000);
 
+
+                    }
+                    catch (IndexOutOfBoundsException e)
+                    {
+                        wait();
+                    }
                 }
             }
         }
