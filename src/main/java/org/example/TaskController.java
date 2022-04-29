@@ -182,13 +182,21 @@ public class TaskController {
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();
         while (true) {
-            if (channel.messageCount(QUEUE_NAME) == 0) continue;
-            log.info("\n" + Thread.currentThread().getName() + " Consume");
-            String url = new String(channel.basicGet(QUEUE_NAME, true).getBody(), StandardCharsets.UTF_8);
-            getPage(url);
+            synchronized (this) {
+                try {
+                    if (channel.messageCount(QUEUE_NAME) == 0) continue;
+                    log.info("\n" + Thread.currentThread().getName() + " Consume");
+                    String url = new String(channel.basicGet(QUEUE_NAME, true).getBody(), StandardCharsets.UTF_8);
+                    getPage(url);
+                    notify();
+                }
+                catch (IndexOutOfBoundsException e) {
+                    wait();
+                }
+            }
         }
-        //channel.close();
-        //connection.close();
+//        channel.close();
+//        connection.close();
     }
 }
 

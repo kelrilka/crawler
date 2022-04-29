@@ -54,10 +54,10 @@ public class Main {
         TaskController taskController = new TaskController(site);
 
         // Create producer thread
-        Thread t1 = new Thread(() -> {
-//            @Override
-//            public void run()
-//            {
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
                 try {
                     // Генератор ссылок
                     taskController.produce();
@@ -65,14 +65,14 @@ public class Main {
                 catch (InterruptedException | IOException | TimeoutException e) {
                     e.printStackTrace();
                 }
-//            }
+            }
         });
 
         // Create consumer thread
-        Thread t2 = new Thread(() -> {
-//            @Override
-//            public void run()
-//            {
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
                 try {
                     // Потребитель ссылок
                     taskController.consume();
@@ -80,7 +80,7 @@ public class Main {
                 catch (InterruptedException | IOException | TimeoutException e) {
                     e.printStackTrace();
                 }
-//            }
+            }
         });
 
         // Start both threads
