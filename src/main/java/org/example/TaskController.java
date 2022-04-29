@@ -1,5 +1,8 @@
 package org.example;
 
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.config.RequestConfig;
@@ -16,6 +19,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.TimeoutException;
+
+
 
 public class TaskController {
     private static Logger log = LogManager.getLogger();
@@ -25,12 +32,31 @@ public class TaskController {
     private int retryDelay = 5 * 1000;
     private int retryCount = 2;
     private int metadataTimeout = 30 * 1000;
+    private static String QUEUE_NAME = "crawler_queue";
+
+
+    ConnectionFactory connectionFactory;
 
     public TaskController(String _server) {
         CookieStore httpCookieStore = new BasicCookieStore();
         builder = HttpClientBuilder.create().setDefaultCookieStore(httpCookieStore);
         client = builder.build();
         this.server = _server;
+
+        // Настройка Rabbit
+        connectionFactory = new ConnectionFactory();
+        connectionFactory.setHost("127.0.0.1");
+        connectionFactory.setPort(5672);
+        connectionFactory.setVirtualHost("/");
+        connectionFactory.setUsername("rabbitmq");
+        connectionFactory.setPassword("rabbitmq");
+
+//        factory = new ConnectionFactory();
+//        factory.setHost("127.0.0.1");
+//        factory.setPort(5672);
+//        factory.setVirtualHost("/");
+//        factory.setUsername("rabbitmq");
+//        factory.setPassword("rabbitmq");
     }
 
     public Document getUrl(String url) {
@@ -98,6 +124,26 @@ public class TaskController {
         return doc;
     }
 
+    void getLinks(Document doc) throws InterruptedException, IOException, TimeoutException {
+//        Set<String> urls = new HashSet<String>();
+        Connection connection = connectionFactory.newConnection();
+        Channel channel = connection.createChannel();
+
+        Elements news = doc.getElementsByClass("feed__item");
+        for (Element element: news) {
+            try {
+                Element etitle = element.child(0).child(1).child(1);
+                String link = etitle.attr("href");
+                channel.basicPublish("", QUEUE_NAME, null, link.getBytes());
+            } catch (Exception e) {
+                log.error(e);
+            }
+        }
+//        return urls;
+        channel.close();
+        connection.close();
+    }
+
     public void getPage(String link) {
         Document ndoc = getUrl(link);
         if (ndoc != null) {
@@ -120,9 +166,29 @@ public class TaskController {
             log.info("URL: " + link);
 
             // Время публикации
-//            String time = "12:00";
             String time = head_service.child(2).child(1).child(0).attr("title");    // в последней иттерации в этой штуке проблема
             log.info("Time: " + time);
         }
     }
+
+    void produce() throws InterruptedException, IOException, TimeoutException {
+        // Сбор ссылок
+        log.info("\n" + Thread.currentThread().getName() + " Produce");
+        getLinks(getUrl(Main.site));
+    }
+
+    void consume() throws InterruptedException, IOException, TimeoutException {
+        // Обработка ссылок
+        Connection connection = connectionFactory.newConnection();
+        Channel channel = connection.createChannel();
+        while (true) {
+            if (channel.messageCount(QUEUE_NAME) == 0) continue;
+            log.info("\n" + Thread.currentThread().getName() + " Consume");
+            String url = new String(channel.basicGet(QUEUE_NAME, true).getBody(), StandardCharsets.UTF_8);
+            getPage(url);
+        }
+        //channel.close();
+        //connection.close();
+    }
 }
+
