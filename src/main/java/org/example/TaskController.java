@@ -65,7 +65,7 @@ public class TaskController {
         boolean bStop = false;
         Document doc = null;
         for (int iTry = 0; iTry < retryCount && !bStop; iTry++) {
-            log.info("Getting page from url: " + url);
+//            log.info("Getting page from url: " + url);
             RequestConfig requestConfig = RequestConfig.custom()
                     .setSocketTimeout(metadataTimeout)
                     .setConnectTimeout(metadataTimeout)
@@ -144,9 +144,10 @@ public class TaskController {
 
     public void getPage(String link) {
         Document ndoc = getUrl(link);
-        if (ndoc != null) {
+        Element header_service = ndoc.select("h1.content-title").first();
+        if (ndoc != null && header_service != null) {
+            log.info("\n" + Thread.currentThread().getName() + " Consume");
             // Заголовок публикации
-            Element header_service = ndoc.select("h1.content-title").first();
             String header = header_service.text();
             log.info("Header: " + header);
 
@@ -172,6 +173,7 @@ public class TaskController {
     void produce() throws InterruptedException, IOException, TimeoutException {
         // Сбор ссылок
         log.info("\n" + Thread.currentThread().getName() + " Produce");
+        log.info("Download: " + Main.site);
         getLinks(getUrl(Main.site));
     }
 
@@ -183,7 +185,6 @@ public class TaskController {
             synchronized (this) {
                 try {
                     if (channel.messageCount(QUEUE_NAME) == 0) continue;
-                    log.info("\n" + Thread.currentThread().getName() + " Consume");
                     String url = new String(channel.basicGet(QUEUE_NAME, true).getBody(), StandardCharsets.UTF_8);
                     if (url!=null)
                         getPage(url);
