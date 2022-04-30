@@ -32,10 +32,10 @@ public class TaskController {
     private int retryDelay = 5 * 1000;
     private int retryCount = 2;
     private int metadataTimeout = 30 * 1000;
-    private static String QUEUE_NAME = "crawler_queue";
+    public static String QUEUE_NAME = "crawler";
 
 
-    ConnectionFactory connectionFactory;
+    ConnectionFactory factory;
 
     public TaskController(String _server) {
         CookieStore httpCookieStore = new BasicCookieStore();
@@ -44,19 +44,19 @@ public class TaskController {
         this.server = _server;
 
         // Настройка Rabbit
-        connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("127.0.0.1");
-        connectionFactory.setPort(5672);
-        connectionFactory.setVirtualHost("/");
-        connectionFactory.setUsername("rabbitmq");
-        connectionFactory.setPassword("rabbitmq");
+//        connectionFactory = new ConnectionFactory();
+//        connectionFactory.setHost("127.0.0.1");
+//        connectionFactory.setPort(5672);
+//        connectionFactory.setVirtualHost("/");
+//        connectionFactory.setUsername("rabbitmq");
+//        connectionFactory.setPassword("rabbitmq");
 
-//        factory = new ConnectionFactory();
-//        factory.setHost("127.0.0.1");
-//        factory.setPort(5672);
-//        factory.setVirtualHost("/");
-//        factory.setUsername("rabbitmq");
-//        factory.setPassword("rabbitmq");
+        factory = new ConnectionFactory();
+        factory.setHost("127.0.0.1");
+        factory.setPort(5672);
+        factory.setVirtualHost("/");
+        factory.setUsername("rabbitmq");
+        factory.setPassword("rabbitmq");
     }
 
     public Document getUrl(String url) {
@@ -125,8 +125,7 @@ public class TaskController {
     }
 
     void getLinks(Document doc) throws InterruptedException, IOException, TimeoutException {
-//        Set<String> urls = new HashSet<String>();
-        Connection connection = connectionFactory.newConnection();
+        Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
         Elements news = doc.getElementsByClass("feed__item");
@@ -139,7 +138,6 @@ public class TaskController {
                 log.error(e);
             }
         }
-//        return urls;
         channel.close();
         connection.close();
     }
@@ -179,7 +177,7 @@ public class TaskController {
 
     void consume() throws InterruptedException, IOException, TimeoutException {
         // Обработка ссылок
-        Connection connection = connectionFactory.newConnection();
+        Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
         while (true) {
             synchronized (this) {
@@ -187,7 +185,8 @@ public class TaskController {
                     if (channel.messageCount(QUEUE_NAME) == 0) continue;
                     log.info("\n" + Thread.currentThread().getName() + " Consume");
                     String url = new String(channel.basicGet(QUEUE_NAME, true).getBody(), StandardCharsets.UTF_8);
-                    getPage(url);
+                    if (url!=null)
+                        getPage(url);
                     notify();
                 }
                 catch (IndexOutOfBoundsException e) {
@@ -195,8 +194,6 @@ public class TaskController {
                 }
             }
         }
-//        channel.close();
-//        connection.close();
     }
 }
 
