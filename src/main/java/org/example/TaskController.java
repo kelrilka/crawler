@@ -44,13 +44,6 @@ public class TaskController {
         this.server = _server;
 
         // Настройка Rabbit
-//        connectionFactory = new ConnectionFactory();
-//        connectionFactory.setHost("127.0.0.1");
-//        connectionFactory.setPort(5672);
-//        connectionFactory.setVirtualHost("/");
-//        connectionFactory.setUsername("rabbitmq");
-//        connectionFactory.setPassword("rabbitmq");
-
         factory = new ConnectionFactory();
         factory.setHost("127.0.0.1");
         factory.setPort(5672);
