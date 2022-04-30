@@ -21,4 +21,4 @@ rabbitmq
 rabbitmq
 ```
 /Users/kirill/Documents/МГТУ/8 семестр/ИПиАД/crawler/rabbitmq.png
-![alt-текст](https://github.com/kelrilka/crawler/rabbitmq.png "Веб интерфейс RabbitMQ")
+![alt-текст](https://github.com/kelrilka/crawler/blob/main/rabbitmq.png "Веб интерфейс RabbitMQ")
