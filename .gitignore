@@ -24,4 +24,4 @@ logs/
 hs_err_pid*
 
 # Docker
-docker-data/
+RabbitMQ/docker-data/

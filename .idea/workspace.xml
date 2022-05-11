@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e62c4fb2-a5c1-42e5-b418-dee3ebfc197d" name="Changes" comment="">
+    <list default="true" id="e62c4fb2-a5c1-42e5-b418-dee3ebfc197d" name="Changes" comment="Удалены старые комментарии">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.rmq.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker_rmq.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +86,14 @@
       <option name="presentableId" value="Default" />
       <updated>1645964444983</updated>
     </task>
+    <task id="LOCAL-00001" summary="Удалены старые комментарии">
+      <created>1652256306398</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652256306398</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,6 +106,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Удалены старые комментарии" />
+    <option name="LAST_COMMIT_MESSAGE" value="Удалены старые комментарии" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

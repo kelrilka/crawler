@@ -1,7 +1,7 @@
 # crawler
 
-Для работы с докером в системе должен быть установлен docker и docker-compose. Если ОС Windows установите Docker Desktop.
-данные RMQ будут храниться в папке 
+Для работы с докером в системе должен быть установлен docker и docker-compose. Если ОС Windows, то установите Docker Desktop.
+Данные RMQ будут храниться в папке:
 ```
 ./docker-data/rabbitmq
 ```
@@ -18,6 +18,10 @@ docker-compose -f docker-compose.rmq.yml down
 ## Доступ к GUI RabbitMQ
 ### Адрес в браузере
 [Жмяк](http://localhost:15672)
+```
+http://localhost:15672
+```
+
 ### Логин 
 ```
 rabbitmq
@@ -28,3 +32,11 @@ rabbitmq
 ```
 ![alt-текст](https://github.com/kelrilka/crawler/blob/main/rabbitmq.png "Веб интерфейс RabbitMQ")
 ![alt-текст](https://github.com/kelrilka/crawler/blob/main/example.png "Пример рабоы программы")
+
+## Доступ к GUI Elasticsearch
+Перед запуском контейнера Elasticsearch в некоторых случаях требуется наличие активного VPN.
+### Адрес в браузере
+[Жмяк](http://localhost:5601)
+```
+http://localhost:5601
+```
