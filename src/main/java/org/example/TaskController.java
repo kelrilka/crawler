@@ -158,7 +158,7 @@ public class TaskController {
             log.info("URL: " + link);
 
             // Время публикации
-            String time = head_service.child(2).child(1).child(0).attr("title");    // в последней иттерации в этой штуке проблема
+            String time = head_service.child(2).child(1).child(0).attr("title");
             log.info("Time: " + time);
         }
     }

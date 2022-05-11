@@ -15,7 +15,7 @@ docker-compose -f docker-compose.rmq.yml up -d
 docker-compose -f docker-compose.rmq.yml down
 ```
 
-## Доступ к GUI RabbitMq
+## Доступ к GUI RabbitMQ
 ### Адрес в браузере
 [Жмяк](http://localhost:15672)
 ### Логин 
