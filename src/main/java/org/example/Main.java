@@ -65,13 +65,47 @@ public class Main {
             }
         });
 
+//        // Create thread: transmit to Elasticsearch
+//        Thread t3 = new Thread(new Runnable() {
+//            @Override
+//            public void run()
+//            {
+//                try {
+//                    // Загрузка в БД
+//                    taskController.transmit();
+//                }
+//                catch (InterruptedException | IOException | TimeoutException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//
+//        // Create thread: receive to Elasticsearch
+//        Thread t4 = new Thread(new Runnable() {
+//            @Override
+//            public void run()
+//            {
+//                try {
+//                    // Запрос в БД
+//                    taskController.receive();
+//                }
+//                catch (InterruptedException | IOException | TimeoutException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+
         // Start both threads
         t1.start();
         t2.start();
+//        t3.start();
+//        t4.start();
 
         // t2 finishes before t1
         t1.join();
         t2.join();
+//        t3.join();
+//        t4.join();
 
         return;
     }
