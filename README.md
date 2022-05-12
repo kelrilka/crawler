@@ -1,5 +1,15 @@
 # crawler
 
+## Назначение потоков
+t1 – Генератор ссылок
+
+t2 – Парсинг ссылок
+
+t3 – Запись в БД Elasticsearch
+
+t4 – Запрос к БД Elasticsearch
+
+## Docker
 Для работы с докером в системе должен быть установлен docker и docker-compose. Если ОС Windows, то установите Docker Desktop.
 Данные RMQ будут храниться в папке:
 ```

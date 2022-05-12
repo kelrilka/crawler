@@ -1,5 +1,6 @@
 package org.example;
 
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -17,12 +18,24 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeoutException;
-
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.Client;
+import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.transport.TransportAddress;
+import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.bucket.terms.Terms;
+import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.concurrent.ExecutionException;
 
 public class TaskController {
     private static Logger log = LogManager.getLogger();
@@ -32,8 +45,8 @@ public class TaskController {
     private int retryDelay = 5 * 1000;
     private int retryCount = 2;
     private int metadataTimeout = 30 * 1000;
-    public static String QUEUE_NAME = "crawler";
-
+    public static String QUEUE_LINK = "crawler_link";
+    public static String QUEUE_DB = "crawler_db";
 
     ConnectionFactory factory;
 
@@ -126,7 +139,7 @@ public class TaskController {
             try {
                 Element etitle = element.child(0).child(1).child(1);
                 String link = etitle.attr("href");
-                channel.basicPublish("", QUEUE_NAME, null, link.getBytes());
+                channel.basicPublish("", QUEUE_LINK, null, link.getBytes());
             } catch (Exception e) {
                 log.error(e);
             }
@@ -135,7 +148,10 @@ public class TaskController {
         connection.close();
     }
 
-    public void getPage(String link) {
+    public void getPage(String link) throws InterruptedException, IOException, TimeoutException {
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
+
         Document ndoc = getUrl(link);
         Element header_service = ndoc.select("h1.content-title").first();
         if (ndoc != null && header_service != null) {
@@ -160,6 +176,15 @@ public class TaskController {
             // Время публикации
             String time = head_service.child(2).child(1).child(0).attr("title");
             log.info("Time: " + time);
+
+            // Информацию, которую получили выше, отправляем в очередь (вторую), из которой уже будем записывать в Elasticsearch
+            // Для этого из полученных данных собираем json
+            Json json = new Json(header, newsDoc, author, link, time);
+            ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+            String json_complete = ow.writeValueAsString(json);
+
+            // Оправляем в очередь
+            channel.basicPublish("", QUEUE_DB, null, json_complete.getBytes());
         }
     }
 
@@ -177,8 +202,8 @@ public class TaskController {
         while (true) {
             synchronized (this) {
                 try {
-                    if (channel.messageCount(QUEUE_NAME) == 0) continue;
-                    String url = new String(channel.basicGet(QUEUE_NAME, true).getBody(), StandardCharsets.UTF_8);
+                    if (channel.messageCount(QUEUE_LINK) == 0) continue;
+                    String url = new String(channel.basicGet(QUEUE_LINK, true).getBody(), StandardCharsets.UTF_8);
                     if (url!=null)
                         getPage(url);
                     notify();
@@ -190,13 +215,37 @@ public class TaskController {
         }
     }
 
-//    void transmit() {
-//
-//    }
-//
-//    void receive() {
-//
-//    }
+    void transmit() throws IOException, TimeoutException {
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
+
+        while (true){
+            if (channel.messageCount(QUEUE_DB) == 0) continue;
+            String json = new String(channel.basicGet(QUEUE_DB, true).getBody(), StandardCharsets.UTF_8);
+            Client client = new PreBuiltTransportClient(
+                    Settings.builder().put("cluster.name","docker-cluster").build())
+                    .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"), 9300));
+            String sha256hex = org.apache.commons.codec.digest.DigestUtils.sha256Hex(json);
+            client.prepareIndex("crawler", "_doc", sha256hex).setSource(json, XContentType.JSON).get();
+        }
+    }
+
+    void receive() throws UnknownHostException, ExecutionException, InterruptedException {
+        Client client = new PreBuiltTransportClient(
+                Settings.builder().put("cluster.name","docker-cluster").build())
+                .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"), 9300));
+
+        TermsAggregationBuilder aggregationBuilder = AggregationBuilders.terms("AUTHOR_count").field("AUTHOR.keyword");
+        SearchSourceBuilder searchSourceBuilder2 = new SearchSourceBuilder().aggregation(aggregationBuilder);
+        SearchRequest searchRequest2 = new SearchRequest().indices("crawler").source(searchSourceBuilder2);
+        SearchResponse searchResponse = client.search(searchRequest2).get();
+        Terms terms = searchResponse.getAggregations().get("AUTHOR_count");
+
+        for (Terms.Bucket bucket : terms.getBuckets())
+            log.info("author=" + bucket.getKey()+" count="+bucket.getDocCount());
+
+        client.close();
+    }
 
 }
 

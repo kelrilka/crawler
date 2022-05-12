@@ -7,6 +7,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 
@@ -26,7 +28,8 @@ public class Main {
         Connection connection = factory.newConnection();
 
         Channel channel = connection.createChannel();
-        channel.queueDeclare(TaskController.QUEUE_NAME, false, false, false, null);
+        channel.queueDeclare(TaskController.QUEUE_LINK, false, false, false, null); // Producer->Consumer
+        channel.queueDeclare(TaskController.QUEUE_DB, false, false, false, null);   // Consumer->Elasticsearch
         channel.close();
         connection.close();
 
@@ -65,47 +68,47 @@ public class Main {
             }
         });
 
-//        // Create thread: transmit to Elasticsearch
-//        Thread t3 = new Thread(new Runnable() {
-//            @Override
-//            public void run()
-//            {
-//                try {
-//                    // Загрузка в БД
-//                    taskController.transmit();
-//                }
-//                catch (InterruptedException | IOException | TimeoutException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//
-//        // Create thread: receive to Elasticsearch
-//        Thread t4 = new Thread(new Runnable() {
-//            @Override
-//            public void run()
-//            {
-//                try {
-//                    // Запрос в БД
-//                    taskController.receive();
-//                }
-//                catch (InterruptedException | IOException | TimeoutException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
+        // Create thread: transmit to Elasticsearch
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                try {
+                    // Загрузка в БД
+                    taskController.transmit();
+                }
+                catch (IOException | TimeoutException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // Create thread: receive to Elasticsearch
+        Thread t4 = new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                try {
+                    // Запрос в БД
+                    taskController.receive();
+                }
+                catch (UnknownHostException | ExecutionException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         // Start both threads
         t1.start();
         t2.start();
-//        t3.start();
-//        t4.start();
+        t3.start();
+        t4.start();
 
         // t2 finishes before t1
         t1.join();
         t2.join();
-//        t3.join();
-//        t4.join();
+        t3.join();
+        t4.join();
 
         return;
     }
