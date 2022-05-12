@@ -50,3 +50,15 @@ rabbitmq
 ```
 http://localhost:5601
 ```
+### Запрос к БД через GUI
+```
+GET crawler/_search
+{
+    "size": 1000,
+    "query": {
+        "match_all": {}
+    }
+}
+```
+
+![alt-текст](https://github.com/kelrilka/crawler/blob/main/elasticsearch.png "elasticsearch")
