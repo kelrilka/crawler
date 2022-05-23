@@ -62,3 +62,7 @@ GET crawler/_search
 ```
 
 ![alt-текст](https://github.com/kelrilka/crawler/blob/main/elasticsearch.png "elasticsearch")
+
+### Запрос к БД через код
+![alt-текст](https://github.com/kelrilka/crawler/blob/main/request.png "request")
+

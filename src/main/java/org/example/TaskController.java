@@ -246,8 +246,9 @@ public class TaskController {
         SearchResponse searchResponse = client.search(searchRequest2).get();
         Terms terms = searchResponse.getAggregations().get("AUTHOR_count");
 
+        log.info("Query\n");
         for (Terms.Bucket bucket : terms.getBuckets())
-            log.info("author=" + bucket.getKey()+ " count=" + bucket.getDocCount());
+            log.info("Count: " + bucket.getDocCount() + "\t\tAuthor: " + bucket.getKey());
 
         client.close();
     }

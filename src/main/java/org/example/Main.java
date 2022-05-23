@@ -83,7 +83,7 @@ public class Main {
             }
         });
 
-        // Create thread: receive to Elasticsearch
+        // Create thread: receive to Elasticsearch (request)
         Thread t4 = new Thread(new Runnable() {
             @Override
             public void run()
