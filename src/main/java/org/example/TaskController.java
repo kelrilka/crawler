@@ -162,7 +162,12 @@ public class TaskController {
 
             // Текст публикации
             String newsDoc = ndoc.getElementsByClass("content content--full ").select("div[class*=l-island-a] > *"). text();
-            log.info("Text: " + newsDoc); //  Уточнить: Иногда бывает реклама на странице. Не всегда!
+
+            // Иногда бывает реклама на странице с новоситью в виде кода, функция text() ее не удаляет. Поэтому делаем так :)
+            newsDoc = newsDoc.replaceAll("\\{.*?\\}","");
+            newsDoc = newsDoc.replaceAll(",\"gtm\":\"\"}","");
+
+            log.info("Text: " + newsDoc);
 
             Element head_service = ndoc.select("div.content-header__info").first(); // Шапка статьи, в которой содержится: время публикации и автор
 
@@ -242,7 +247,7 @@ public class TaskController {
         Terms terms = searchResponse.getAggregations().get("AUTHOR_count");
 
         for (Terms.Bucket bucket : terms.getBuckets())
-            log.info("author=" + bucket.getKey()+" count="+bucket.getDocCount());
+            log.info("author=" + bucket.getKey()+ " count=" + bucket.getDocCount());
 
         client.close();
     }
