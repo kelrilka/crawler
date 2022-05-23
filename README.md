@@ -10,19 +10,19 @@ t3 – Запись в БД Elasticsearch
 t4 – Запрос к БД Elasticsearch
 
 ## Docker
-Для работы с докером в системе должен быть установлен docker и docker-compose. Если ОС Windows, то установите Docker Desktop.
+Для работы с Docker в системе должен быть установлен Docker и Docker-Compose. Если ОС Windows, то установите Docker Desktop.
 Данные RMQ будут храниться в папке:
 ```
 ./docker-data/rabbitmq
 ```
-## Запуск контейнера
+## Запуск контейнеров
 ```
-docker-compose -f docker-compose.rmq.yml up -d
+./docker_stop.sh
 ```
 
-## Остановка контейнера
+## Остановка контейнеров
 ```
-docker-compose -f docker-compose.rmq.yml down
+./docker_run.sh
 ```
 
 ## Доступ к GUI RabbitMQ
