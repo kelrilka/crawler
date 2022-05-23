@@ -52,7 +52,7 @@ http://localhost:5601
 ```
 ### Запрос к БД через GUI
 ```
-GET crawler/_search
+GET crawler_db/_search
 {
     "size": 1000,
     "query": {
