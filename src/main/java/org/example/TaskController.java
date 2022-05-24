@@ -231,7 +231,7 @@ public class TaskController {
                     Settings.builder().put("cluster.name","docker-cluster").build())
                     .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"), 9300));
             String sha256hex = org.apache.commons.codec.digest.DigestUtils.sha256Hex(json);
-            client.prepareIndex("crawler_db", "_doc", sha256hex).setSource(json, XContentType.JSON).get();
+            client.prepareIndex("crawler_db1", "_doc", sha256hex).setSource(json, XContentType.JSON).get();
         }
     }
 
@@ -242,7 +242,7 @@ public class TaskController {
 
         TermsAggregationBuilder aggregationBuilder = AggregationBuilders.terms("AUTHOR_count").field("AUTHOR.keyword");
         SearchSourceBuilder searchSourceBuilder2 = new SearchSourceBuilder().aggregation(aggregationBuilder);
-        SearchRequest searchRequest2 = new SearchRequest().indices("crawler_db").source(searchSourceBuilder2);
+        SearchRequest searchRequest2 = new SearchRequest().indices("crawler_db1").source(searchSourceBuilder2);
         SearchResponse searchResponse = client.search(searchRequest2).get();
         Terms terms = searchResponse.getAggregations().get("AUTHOR_count");
 
