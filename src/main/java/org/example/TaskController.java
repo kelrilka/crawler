@@ -14,12 +14,17 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.search.SearchHit;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.TimeoutException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.elasticsearch.action.search.SearchRequest;
@@ -36,6 +41,16 @@ import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.concurrent.ExecutionException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.elasticsearch.client.RequestOptions;
+
+
+import org.elasticsearch.index.query.QueryBuilders;
+
+
 
 public class TaskController {
     private static Logger log = LogManager.getLogger();
@@ -231,7 +246,7 @@ public class TaskController {
                     Settings.builder().put("cluster.name","docker-cluster").build())
                     .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"), 9300));
             String sha256hex = org.apache.commons.codec.digest.DigestUtils.sha256Hex(json);
-            client.prepareIndex("crawler_db1", "_doc", sha256hex).setSource(json, XContentType.JSON).get();
+            client.prepareIndex("crawler_db2", "_doc", sha256hex).setSource(json, XContentType.JSON).get();
         }
     }
 
@@ -242,7 +257,7 @@ public class TaskController {
 
         TermsAggregationBuilder aggregationBuilder = AggregationBuilders.terms("AUTHOR_count").field("AUTHOR.keyword");
         SearchSourceBuilder searchSourceBuilder2 = new SearchSourceBuilder().aggregation(aggregationBuilder);
-        SearchRequest searchRequest2 = new SearchRequest().indices("crawler_db1").source(searchSourceBuilder2);
+        SearchRequest searchRequest2 = new SearchRequest().indices("crawler_db2").source(searchSourceBuilder2);
         SearchResponse searchResponse = client.search(searchRequest2).get();
         Terms terms = searchResponse.getAggregations().get("AUTHOR_count");
 
@@ -252,12 +267,30 @@ public class TaskController {
         client.close();
     }
 
-    void analysisMinHash() throws IOException {
+    void analysisMinHash() throws IOException, ExecutionException, InterruptedException {
+        Client client = new PreBuiltTransportClient(
+                Settings.builder().put("cluster.name","docker-cluster").build())
+                .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"), 9300));
 
-//        Analysis.createFile("article0", "С 22 февраля рубль оказался не просто в числе валют, выросших относительно доллара (а таких всего 3), но и перешел важный порог в +20%. Есть повод для национальной гордости?    2760 просмотров Думаю, что нет.");
+        TermsAggregationBuilder aggregationBuilder = AggregationBuilders.terms("AUTHOR_count").field("TEXT.keyword");
+        SearchSourceBuilder searchSourceBuilder2 = new SearchSourceBuilder().aggregation(aggregationBuilder);
+        SearchRequest searchRequest2 = new SearchRequest().indices("crawler_db2").source(searchSourceBuilder2);
+        SearchResponse searchResponse = client.search(searchRequest2).get();
+        Iterator<SearchHit> sHits = searchResponse.getHits().iterator();
+
+        List<String> results = new ArrayList<String>(20); //some hack! initial size of array!
+        while (sHits.hasNext()) {
+            results.add(sHits.next().getSourceAsString());
+            //jackson
+
+        }
+
+        client.close();
+
+
+//        Analysis.createFile("article0", );
 //        Analysis.createFile("article1", "В моей картине мира рубль конвертируемый. Так почему же я не вижу повода для гордости?");
-
-        Analysis.nearDuplicates("article0", "article1");
+//        Analysis.nearDuplicates("article0", "article1");
     }
 }
 

@@ -5,101 +5,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e62c4fb2-a5c1-42e5-b418-dee3ebfc197d" name="Changes" comment="Добавлена информация по Elasticsearch в ReadMe">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Analysis.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MinHash.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2r.fdm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2r.fdt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2r.fdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2r.fnm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2r.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2r_2.liv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2r_Lucene84_0.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2r_Lucene84_0.tim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2r_Lucene84_0.tip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2r_Lucene84_0.tmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2s.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2s.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2s.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2u.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2u.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/_2u.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/manifest-2.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/node-2.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/_state/segments_2x" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/_state/retention-leases-6.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/_state/state-1.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_0.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_0.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_0.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_1.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_1.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_1.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_1_1.fnm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_1_1_Lucene80_0.dvd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_1_1_Lucene80_0.dvm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_2.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_2.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_2.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_3.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_3.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_3.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_4.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_4.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_4.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_5.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_5.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_5.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_6.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_6.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_6.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_7.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_7.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/_7.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/index/segments_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/translog/translog-5.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/translog/translog.ckp" beforeDir="false" afterPath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/0/translog/translog.ckp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/3YEmS-xzSgGcWMbtzl9L1w/_state/state-8.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/Bkx1IUpZSzmUbthCvBD9yg/0/_state/retention-leases-3.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/Bkx1IUpZSzmUbthCvBD9yg/0/_state/state-2.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/Bkx1IUpZSzmUbthCvBD9yg/0/translog/translog-4.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/Bkx1IUpZSzmUbthCvBD9yg/0/translog/translog.ckp" beforeDir="false" afterPath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/Bkx1IUpZSzmUbthCvBD9yg/0/translog/translog.ckp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/Bkx1IUpZSzmUbthCvBD9yg/_state/state-9.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/PVAG0EocSwSM9hbPc83rjw/0/_state/retention-leases-4.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/PVAG0EocSwSM9hbPc83rjw/0/_state/state-2.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/PVAG0EocSwSM9hbPc83rjw/0/translog/translog-5.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/PVAG0EocSwSM9hbPc83rjw/0/translog/translog.ckp" beforeDir="false" afterPath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/PVAG0EocSwSM9hbPc83rjw/0/translog/translog.ckp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/PVAG0EocSwSM9hbPc83rjw/_state/state-17.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/c9Hzc0gCTC2zJTlaqMAPlA/0/_state/retention-leases-3.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/c9Hzc0gCTC2zJTlaqMAPlA/0/_state/state-2.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/c9Hzc0gCTC2zJTlaqMAPlA/0/translog/translog-4.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/c9Hzc0gCTC2zJTlaqMAPlA/0/translog/translog.ckp" beforeDir="false" afterPath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/c9Hzc0gCTC2zJTlaqMAPlA/0/translog/translog.ckp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/c9Hzc0gCTC2zJTlaqMAPlA/_state/state-9.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/hi0lWebmSyeijnxlVMgZDQ/0/_state/retention-leases-4.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/hi0lWebmSyeijnxlVMgZDQ/0/_state/state-2.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/hi0lWebmSyeijnxlVMgZDQ/0/translog/translog-5.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/hi0lWebmSyeijnxlVMgZDQ/0/translog/translog.ckp" beforeDir="false" afterPath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/hi0lWebmSyeijnxlVMgZDQ/0/translog/translog.ckp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/hi0lWebmSyeijnxlVMgZDQ/_state/state-19.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/_state/retention-leases-11.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/_state/state-2.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/translog/translog-7.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/_state/retention-leases-113.st" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y.fdm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y.fdt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y.kdd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y.kdi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y.kdm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y.nvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y_1_Lucene80_0.dvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y_1_Lucene80_0.dvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y_Lucene80_0.dvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y_Lucene80_0.dvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y_Lucene84_0.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y_Lucene84_0.pos" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y_Lucene84_0.tim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y_Lucene84_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6y_Lucene84_0.tmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6z.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6z.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6z.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6z_2.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6z_2_Lucene80_0.dvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_6z_2_Lucene80_0.dvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_70.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_70.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_70.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_70_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_70_1_Lucene80_0.dvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_70_1_Lucene80_0.dvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_71.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_71.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_71.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_71_2.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_71_2_Lucene80_0.dvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_71_2_Lucene80_0.dvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_72.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_72.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_72.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_72_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_72_1_Lucene80_0.dvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_72_1_Lucene80_0.dvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_73.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_73.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_73.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_73_2.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_73_2_Lucene80_0.dvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_73_2_Lucene80_0.dvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_74.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_74.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_74.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_74_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_74_1_Lucene80_0.dvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_74_1_Lucene80_0.dvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_75.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_75.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_75.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_75_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_75_1_Lucene80_0.dvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/index/_75_1_Lucene80_0.dvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/translog/translog-8.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/translog/translog-8.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/translog/translog.ckp" beforeDir="false" afterPath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/0/translog/translog.ckp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/iVG4yXnYSHOgCAIcSMJuKA/_state/state-11.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/mLLtv7MQQsWqLUtwdXLFbw/0/_state/retention-leases-4.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/mLLtv7MQQsWqLUtwdXLFbw/0/_state/state-2.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/mLLtv7MQQsWqLUtwdXLFbw/0/translog/translog-5.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/mLLtv7MQQsWqLUtwdXLFbw/0/translog/translog.ckp" beforeDir="false" afterPath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/mLLtv7MQQsWqLUtwdXLFbw/0/translog/translog.ckp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/mLLtv7MQQsWqLUtwdXLFbw/_state/state-10.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/tTulChduTyWj7IWcf0v2pA/0/_state/retention-leases-10.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/tTulChduTyWj7IWcf0v2pA/0/_state/state-2.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/tTulChduTyWj7IWcf0v2pA/0/index/_c.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/tTulChduTyWj7IWcf0v2pA/0/index/_c.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/tTulChduTyWj7IWcf0v2pA/0/index/_c.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/tTulChduTyWj7IWcf0v2pA/0/index/segments_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/tTulChduTyWj7IWcf0v2pA/0/translog/translog-7.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/tTulChduTyWj7IWcf0v2pA/0/translog/translog.ckp" beforeDir="false" afterPath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/tTulChduTyWj7IWcf0v2pA/0/translog/translog.ckp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch/docker-elk/.\elasticsearch\data\/nodes/0/indices/tTulChduTyWj7IWcf0v2pA/_state/state-12.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article0" beforeDir="false" afterPath="$PROJECT_DIR$/article0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article0vector" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/article1" beforeDir="false" afterPath="$PROJECT_DIR$/article1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article1vector" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TaskController.java" afterDir="false" />
     </list>
@@ -217,7 +192,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/TaskController.java</url>
-          <line>259</line>
+          <line>288</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -229,6 +204,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Analysis.java</url>
           <line>38</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Analysis.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
