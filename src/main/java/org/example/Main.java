@@ -94,6 +94,22 @@ public class Main {
                 }
                 catch (UnknownHostException | ExecutionException | InterruptedException e) {
                     e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // Analysis: MinHash
+        Thread t5 = new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                try {
+                    taskController.analysisMinHash();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -103,12 +119,14 @@ public class Main {
         t2.start();
         t3.start();
         t4.start();
+        t5.start();
 
         // t2 finishes before t1
         t1.join();
         t2.join();
         t3.join();
         t4.join();
+        t5.join();
 
         return;
     }

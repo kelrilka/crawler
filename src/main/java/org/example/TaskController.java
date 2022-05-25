@@ -246,12 +246,18 @@ public class TaskController {
         SearchResponse searchResponse = client.search(searchRequest2).get();
         Terms terms = searchResponse.getAggregations().get("AUTHOR_count");
 
-        log.info("Query\n");
         for (Terms.Bucket bucket : terms.getBuckets())
             log.info("Count: " + bucket.getDocCount() + "\t\tAuthor: " + bucket.getKey());
 
         client.close();
     }
 
+    void analysisMinHash() throws IOException {
+
+//        Analysis.createFile("article0", "С 22 февраля рубль оказался не просто в числе валют, выросших относительно доллара (а таких всего 3), но и перешел важный порог в +20%. Есть повод для национальной гордости?    2760 просмотров Думаю, что нет.");
+//        Analysis.createFile("article1", "В моей картине мира рубль конвертируемый. Так почему же я не вижу повода для гордости?");
+
+        Analysis.nearDuplicates("article0", "article1");
+    }
 }
 
