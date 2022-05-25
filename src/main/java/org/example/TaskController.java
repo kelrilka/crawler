@@ -14,7 +14,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -41,15 +40,6 @@ import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.concurrent.ExecutionException;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.elasticsearch.client.RequestOptions;
-
-
-import org.elasticsearch.index.query.QueryBuilders;
-
 
 
 public class TaskController {
@@ -284,9 +274,14 @@ public class TaskController {
             results.add(sHits.next().getSourceAsString());
             continue;
         }
-
-
         client.close();
+
+        for (int i=0; i<5; i++) {
+            String json = results.get(i);
+            ObjectMapper objectMapper = new ObjectMapper();
+            Json textJson = objectMapper.readValue(json, Json.class);
+            log.info("Text for MinHash: " + textJson.TEXT);
+        }
 
 
 //        Analysis.createFile("article0", );
