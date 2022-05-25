@@ -272,18 +272,19 @@ public class TaskController {
                 Settings.builder().put("cluster.name","docker-cluster").build())
                 .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"), 9300));
 
-        TermsAggregationBuilder aggregationBuilder = AggregationBuilders.terms("AUTHOR_count").field("TEXT.keyword");
+        TermsAggregationBuilder aggregationBuilder = AggregationBuilders.terms("TEXT_count").field("TEXT.keyword");
         SearchSourceBuilder searchSourceBuilder2 = new SearchSourceBuilder().aggregation(aggregationBuilder);
         SearchRequest searchRequest2 = new SearchRequest().indices("crawler_db2").source(searchSourceBuilder2);
         SearchResponse searchResponse = client.search(searchRequest2).get();
         Iterator<SearchHit> sHits = searchResponse.getHits().iterator();
 
-        List<String> results = new ArrayList<String>(20); //some hack! initial size of array!
-        while (sHits.hasNext()) {
-            results.add(sHits.next().getSourceAsString());
-            //jackson
+        List<String> results = new ArrayList<String>(5);
 
+        for (int i=0; i<5 && sHits.hasNext(); i++) {
+            results.add(sHits.next().getSourceAsString());
+            continue;
         }
+
 
         client.close();
 
