@@ -270,23 +270,21 @@ public class TaskController {
 
         List<String> results = new ArrayList<String>(5);
 
-        for (int i=0; i<5 && sHits.hasNext(); i++) {
+        for (int i=0; i<2 && sHits.hasNext(); i++) {
             results.add(sHits.next().getSourceAsString());
-            continue;
-        }
-        client.close();
-
-        for (int i=0; i<5; i++) {
             String json = results.get(i);
             ObjectMapper objectMapper = new ObjectMapper();
             Json textJson = objectMapper.readValue(json, Json.class);
-            log.info("Text for MinHash: " + textJson.TEXT);
+//            log.info("Text for MinHash: " + textJson.TEXT);
+            Analysis.createFile("article" + i, textJson.TEXT);
         }
 
+        client.close();
 
-//        Analysis.createFile("article0", );
-//        Analysis.createFile("article1", "В моей картине мира рубль конвертируемый. Так почему же я не вижу повода для гордости?");
-//        Analysis.nearDuplicates("article0", "article1");
+//        Analysis.createFile("article0", "В современных ноутбуках с каждым годом все меньше портов и разъемов. Есть бренд, который знает, что с этим делать");
+//        Analysis.createFile("article1", "В кадре площадь Революции в Москве, вид от Манежной в сторону Театральной площади, где расположилось здание гостиницы «Метрополь»");
+
+        Analysis.nearDuplicates("article0", "article1");
     }
 }
 

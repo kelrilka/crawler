@@ -28,7 +28,7 @@ public class Analysis {
         t.setTokenPreProcessor(new CommonPreprocessor());
 
         Word2Vec vec = new Word2Vec.Builder()
-                .minWordFrequency(1)
+                .minWordFrequency(2)
                 .layerSize(100)
                 .seed(42)
                 .windowSize(5)
@@ -48,13 +48,13 @@ public class Analysis {
         Set<String> set1 = new HashSet<>();
         Set<String> set2 = new HashSet<>();
 
-        FileReader fr = new FileReader(filename1 + "vector");
-        extractWordsToSet(set1, fr);
+        FileReader fr1 = new FileReader(filename1 + "vector");
+        extractWordsToSet(set1, fr1);
 
         FileReader fr2 = new FileReader(filename2 + "vector");
         extractWordsToSet(set2, fr2);
 
-        MinHash<String> f = new MinHash<>(set1.size() + set2.size());
+        MinHash<String> f = new MinHash<>( set1.size() + set2.size());
         System.out.println(set1.size() + set2.size());
         System.out.println("Similarity between two sets: " + f.similarity(set1, set2));
     }
