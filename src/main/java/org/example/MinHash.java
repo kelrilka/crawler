@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -64,7 +63,7 @@ public class MinHash<T> {
         return Math.abs(hashValue);
     }
 
-    //находит минимальный хэш для Set, которая представляет собой массив
+    // Находит минимальный хэш для Set, которая представляет собой массив
     private void computeMinHashForSet(Set<T> set, int setIndex, int[][] minHashValues, Map<T, boolean[]> bitArray) {
 
         int index = 0;

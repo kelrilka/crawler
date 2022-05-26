@@ -281,9 +281,6 @@ public class TaskController {
 
         client.close();
 
-//        Analysis.createFile("article0", "В современных ноутбуках с каждым годом все меньше портов и разъемов. Есть бренд, который знает, что с этим делать");
-//        Analysis.createFile("article1", "В кадре площадь Революции в Москве, вид от Манежной в сторону Театральной площади, где расположилось здание гостиницы «Метрополь»");
-
         Analysis.nearDuplicates("article0", "article1");
     }
 }

@@ -25,3 +25,9 @@ hs_err_pid*
 
 # Docker
 RabbitMQ/docker-data/
+
+# MinHash
+article0
+article1
+article0vector
+article1vector

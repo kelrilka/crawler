@@ -92,9 +92,7 @@ public class Main {
                     // Запрос в БД
                     taskController.receive();
                 }
-                catch (UnknownHostException | ExecutionException | InterruptedException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
+                catch (ExecutionException | InterruptedException | IOException e) {
                     e.printStackTrace();
                 }
             }
