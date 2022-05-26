@@ -1,4 +1,6 @@
 # crawler
+## Схема работы потоков
+![alt-текст](https://github.com/kelrilka/crawler/blob/main/doc/crawler_scheme.png "crawler_scheme")
 
 ## Назначение потоков
 t1 – Генератор ссылок
@@ -8,6 +10,8 @@ t2 – Парсинг ссылок
 t3 – Запись в БД Elasticsearch
 
 t4 – Запрос к БД Elasticsearch
+
+t5 – Анализ MinHash
 
 ## Docker
 Для работы с Docker в системе должен быть установлен Docker и Docker-Compose. Если ОС Windows, то установите Docker Desktop.
@@ -40,8 +44,8 @@ rabbitmq
 ```
 rabbitmq
 ```
-![alt-текст](https://github.com/kelrilka/crawler/blob/main/rabbitmq.png "Веб интерфейс RabbitMQ")
-![alt-текст](https://github.com/kelrilka/crawler/blob/main/example.png "Пример рабоы программы")
+![alt-текст](https://github.com/kelrilka/crawler/blob/main/doc/rabbitmq.png "Веб интерфейс RabbitMQ")
+![alt-текст](https://github.com/kelrilka/crawler/blob/main/doc/example.png "Пример рабоы программы")
 
 ## Доступ к GUI Elasticsearch
 Перед запуском контейнера Elasticsearch в некоторых случаях требуется наличие активного VPN.
@@ -61,8 +65,8 @@ GET crawler_db/_search
 }
 ```
 
-![alt-текст](https://github.com/kelrilka/crawler/blob/main/elasticsearch.png "elasticsearch")
+![alt-текст](https://github.com/kelrilka/crawler/blob/main/doc/elasticsearch.png "elasticsearch")
 
 ### Запрос к БД через код
-![alt-текст](https://github.com/kelrilka/crawler/blob/main/request.png "request")
+![alt-текст](https://github.com/kelrilka/crawler/blob/main/doc/request.png "request")
 
