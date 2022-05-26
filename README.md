@@ -56,7 +56,7 @@ http://localhost:5601
 ```
 ### Запрос к БД через GUI
 ```
-GET crawler_db/_search
+GET crawler_db2/_search
 {
     "size": 1000,
     "query": {
@@ -70,3 +70,5 @@ GET crawler_db/_search
 ### Запрос к БД через код
 ![alt-текст](https://github.com/kelrilka/crawler/blob/main/doc/request.png "request")
 
+## Анализ (MinHash)
+![alt-текст](https://github.com/kelrilka/crawler/blob/main/doc/minhash.png "request")
